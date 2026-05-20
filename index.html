@@ -235,10 +235,10 @@
 
         <!-- Editor View -->
         <div id="view-editor"
-            class="flex w-full h-full opacity-0 pointer-events-none transition-opacity duration-300 absolute inset-0 z-30">
-            <!-- Sidebar -->
+            class="flex flex-col md:flex-row w-full h-full opacity-0 pointer-events-none transition-opacity duration-300 absolute inset-0 z-30">
+            <!-- Sidebar / Bottom sheet on mobile -->
             <aside
-                class="w-80 bg-surface-container-low border-r border-outline-variant p-4 flex flex-col gap-4 overflow-y-auto z-10 shrink-0">
+                class="w-full md:w-80 bg-surface-container-low border-t md:border-t-0 md:border-r border-outline-variant p-4 flex flex-col gap-4 overflow-y-auto z-10 shrink-0 order-2 md:order-1 max-h-[50vh] md:max-h-full">
                 <h2 class="font-bold text-lg text-primary">Configuration</h2>
 
                 <div class="flex flex-col gap-1 mt-4">
@@ -282,7 +282,7 @@
                     </label>
                 </div>
 
-                <div class="mt-auto flex flex-col gap-2">
+                <div class="mt-auto flex flex-col gap-2 pt-4">
                     <button id="btn-preview"
                         class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
                         <span class="material-symbols-outlined">visibility</span> Preview Print
@@ -296,7 +296,7 @@
 
             <!-- Editor Canvas -->
             <main
-                class="flex-1 bg-surface-container canvas-bg relative flex flex-col items-center justify-center overflow-hidden">
+                class="flex-1 bg-surface-container canvas-bg relative flex flex-col items-center justify-center overflow-hidden order-1 md:order-2 min-h-0">
                 <!-- Info overlay -->
                 <div id="editor-info"
                     class="absolute top-4 left-4 z-20 bg-on-surface/80 text-white px-3 py-1 rounded-full text-xs font-mono flex items-center gap-2">
@@ -324,7 +324,7 @@
                     </div>
                 </div>
                 <div
-                    class="absolute bottom-4 text-on-surface-variant text-sm font-medium bg-white/80 px-4 py-2 rounded-full shadow-sm">
+                    class="absolute bottom-4 text-on-surface-variant text-sm font-medium bg-white/80 px-4 py-2 rounded-full shadow-sm z-20">
                     Drag photo to reposition. Use sidebar to zoom.
                 </div>
             </main>
@@ -332,10 +332,10 @@
 
         <!-- Preview View -->
         <div id="view-preview"
-            class="flex w-full h-full opacity-0 pointer-events-none transition-opacity duration-300 absolute inset-0 z-20">
-            <!-- Sidebar -->
+            class="flex flex-col md:flex-row w-full h-full opacity-0 pointer-events-none transition-opacity duration-300 absolute inset-0 z-20">
+            <!-- Sidebar / Bottom sheet on mobile -->
             <aside
-                class="w-80 bg-surface-container-low border-r border-outline-variant p-4 flex flex-col gap-4 overflow-y-auto shrink-0">
+                class="w-full md:w-80 bg-surface-container-low border-t md:border-t-0 md:border-r border-outline-variant p-4 flex flex-col gap-4 overflow-y-auto shrink-0 order-2 md:order-1 max-h-[50vh] md:max-h-full">
                 <h2 class="font-bold text-lg text-primary">Print Preview</h2>
 
                 <div class="bg-surface-container-lowest border border-primary p-4 rounded-xl shadow-sm mt-4">
@@ -348,7 +348,7 @@
                     Photos are automatically tiled to maximize paper usage.
                 </div>
 
-                <div class="mt-auto flex flex-col gap-2">
+                <div class="mt-auto flex flex-col gap-2 pt-4">
                     <button id="btn-print"
                         class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2 shadow-md">
                         <span class="material-symbols-outlined">print</span> Print Now
@@ -369,7 +369,7 @@
             </aside>
 
             <!-- Preview Canvas -->
-            <main class="flex-1 bg-surface-container-high relative flex items-center justify-center overflow-auto p-8">
+            <main class="flex-1 bg-surface-container-high relative flex items-center justify-center overflow-hidden p-4 md:p-8 order-1 md:order-2 min-h-0">
                 <!-- Paper container -->
                 <div id="paper-container"
                     class="bg-white shadow-2xl relative transition-transform duration-300 origin-center"

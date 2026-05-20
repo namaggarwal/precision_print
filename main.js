@@ -39,6 +39,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewPhotoCount = document.getElementById('preview-photo-count');
     const previewPrintDims = document.getElementById('preview-print-dims');
 
+    // Editor UI scaling for responsive mobile viewports
+    function getEditorScaleFactor() {
+        const wrapper = document.getElementById('crop-container-wrapper');
+        if (!wrapper) return 1;
+        const rect = wrapper.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return 1;
+        const padding = 32;
+        const availW = rect.width - padding;
+        const availH = rect.height - padding;
+        
+        const maskW = state.docType.w * state.maskScale;
+        const maskH = state.docType.h * state.maskScale;
+        
+        const scale = Math.min(availW / maskW, availH / maskH);
+        return scale < 1 ? scale : 1;
+    }
+
+    function fitEditorToScreen() {
+        const factor = getEditorScaleFactor();
+        cropContainer.style.transform = `scale(${factor})`;
+    }
+
+    function fitPaperToScreen() {
+        const main = paperContainer.parentElement;
+        if (!main) return;
+        const rect = main.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return;
+        const padding = 32; // 16px each side padding
+        const availW = rect.width - padding;
+        const availH = rect.height - padding;
+        
+        const screenPxPerMm = 3;
+        const paperW = state.printSize.w * screenPxPerMm;
+        const paperH = state.printSize.h * screenPxPerMm;
+        
+        const scale = Math.min(availW / paperW, availH / paperH);
+        paperContainer.style.transform = scale < 1 ? `scale(${scale})` : 'scale(1)';
+    }
+
     // Navigation
     function setView(viewName) {
         Object.values(views).forEach(el => {
@@ -52,8 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (viewName === 'editor') {
             updateEditorMask();
             updateTransform();
+            requestAnimationFrame(() => {
+                fitEditorToScreen();
+            });
         } else if (viewName === 'preview') {
             generatePreview();
+            requestAnimationFrame(() => {
+                fitPaperToScreen();
+            });
         }
     }
 
@@ -102,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cropContainer.style.height = `${h}px`;
         editorMaskName.textContent = state.docType.name;
         editorMaskDims.textContent = `${state.docType.w} x ${state.docType.h} mm`;
+        fitEditorToScreen();
     }
 
     function updateTransform() {
@@ -126,8 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isDragging) return;
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
-        state.x = initialX + dx;
-        state.y = initialY + dy;
+        const factor = getEditorScaleFactor();
+        state.x = initialX + dx / factor;
+        state.y = initialY + dy / factor;
         updateTransform();
     });
 
@@ -419,4 +466,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+    window.addEventListener('resize', () => {
+        if (state.view === 'editor') {
+            fitEditorToScreen();
+        } else if (state.view === 'preview') {
+            fitPaperToScreen();
+        }
+    });
 });
