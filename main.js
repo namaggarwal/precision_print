@@ -45,9 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!wrapper) return 1;
         const rect = wrapper.getBoundingClientRect();
         if (rect.width === 0 || rect.height === 0) return 1;
-        const padding = 32;
-        const availW = rect.width - padding;
-        const availH = rect.height - padding;
+        
+        const style = window.getComputedStyle(wrapper);
+        const paddingX = (parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)) || 32;
+        const paddingY = (parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)) || 32;
+        
+        const availW = rect.width - paddingX;
+        const availH = rect.height - paddingY;
         
         const maskW = state.docType.w * state.maskScale;
         const maskH = state.docType.h * state.maskScale;
@@ -66,9 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!main) return;
         const rect = main.getBoundingClientRect();
         if (rect.width === 0 || rect.height === 0) return;
-        const padding = 32; // 16px each side padding
-        const availW = rect.width - padding;
-        const availH = rect.height - padding;
+        
+        const style = window.getComputedStyle(main);
+        const paddingX = (parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)) || 32;
+        const paddingY = (parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)) || 32;
+        
+        const availW = rect.width - paddingX;
+        const availH = rect.height - paddingY;
         
         const screenPxPerMm = 3;
         const paperW = state.printSize.w * screenPxPerMm;
@@ -466,6 +474,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+    // Auto-fit resizing using ResizeObservers
+    const cropWrapper = document.getElementById('crop-container-wrapper');
+    if (cropWrapper) {
+        new ResizeObserver(() => {
+            if (state.view === 'editor') fitEditorToScreen();
+        }).observe(cropWrapper);
+    }
+
+    const paperParent = paperContainer.parentElement;
+    if (paperParent) {
+        new ResizeObserver(() => {
+            if (state.view === 'preview') fitPaperToScreen();
+        }).observe(paperParent);
+    }
+
     window.addEventListener('resize', () => {
         if (state.view === 'editor') {
             fitEditorToScreen();

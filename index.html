@@ -353,7 +353,7 @@
                 <div class="relative flex items-center justify-center w-full h-full" id="crop-container-wrapper">
                     <!-- This will hold the mask and image -->
                     <div id="crop-container"
-                        class="relative overflow-hidden bg-white shadow-2xl touch-none cursor-move">
+                        class="absolute overflow-hidden bg-white shadow-2xl touch-none cursor-move origin-center">
                         <img id="crop-image" src="" class="absolute max-w-none origin-top-left pointer-events-none"
                             style="transform: translate(0px, 0px) scale(1);">
                         <!-- Mask overlay -->
@@ -416,7 +416,7 @@
             <main class="flex-1 bg-surface-container-high relative flex items-center justify-center overflow-hidden p-4 md:p-8 order-1 md:order-2 min-h-0">
                 <!-- Paper container -->
                 <div id="paper-container"
-                    class="bg-white shadow-2xl relative transition-transform duration-300 origin-center"
+                    class="bg-white shadow-2xl absolute transition-transform duration-300 origin-center"
                     style="width: 600px; height: 400px;">
                     <!-- Photos will be tiled here by JS -->
                 </div>
