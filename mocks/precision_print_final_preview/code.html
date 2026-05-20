@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Final Print Preview - Precision Print</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-container": "#6cf8bb",
+                        "surface-container": "#e5eeff",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-tint": "#0053db",
+                        "primary-container": "#2563eb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface": "#f8f9ff",
+                        "secondary": "#006c49",
+                        "primary": "#004ac6",
+                        "on-secondary-container": "#00714d",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-primary-fixed": "#00174b",
+                        "primary-fixed": "#dbe1ff",
+                        "on-background": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline": "#737686",
+                        "inverse-surface": "#213145",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-container": "#bc4800",
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-container": "#ffede6",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-container": "#eeefff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed": "#002113",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#943700",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "canvas-padding": "48px",
+                        "base": "8px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "dimension-mono": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "dimension-mono": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cut-boundary {
+            border: 1.5pt dashed #ba1a1a;
+            box-shadow: 0 0 0 0.5px white;
+        }
+        .canvas-bg {
+            background-color: #0b1c30; /* Dark canvas as requested */
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .photo-sheet {
+            aspect-ratio: 6 / 4;
+            max-width: 800px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-desktop h-16 w-full fixed top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Precision Print</span>
+<nav class="hidden md:flex gap-6 items-center ml-8">
+<span class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer">Help</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-2xl">account_circle</button>
+</div>
+</header>
+<!-- Main Content Container -->
+<div class="flex flex-1 pt-16 overflow-hidden">
+<!-- SideNavBar (Workflow) -->
+<aside class="hidden md:flex flex-col gap-base p-base h-screen fixed left-0 top-16 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline w-[320px] z-40">
+<div class="mb-6 px-2">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Workflow</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Passport Photo Tool</p>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">cloud_upload</span>
+<span class="text-label-md font-label-md">Upload</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">edit</span>
+<span class="text-label-md font-label-md">Edit</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">visibility</span>
+<span class="text-label-md font-label-md">Preview</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-lg font-bold scale-95 duration-100">
+<span class="material-symbols-outlined">print</span>
+<span class="text-label-md font-label-md">Print</span>
+</div>
+</div>
+<!-- Contextual Help Card -->
+<div class="mt-auto p-4 bg-surface-container-high rounded-xl mb-20 border border-outline-variant">
+<p class="text-label-sm font-label-sm text-on-surface-variant leading-relaxed">
+                    Review your layout carefully. Ensure faces are centered within the safe zones before proceeding to final print.
+                </p>
+</div>
+</aside>
+<!-- Canvas Area -->
+<main class="flex-1 ml-0 md:ml-[320px] canvas-bg relative flex flex-col items-center justify-center p-canvas-padding overflow-auto">
+<!-- Dimensions Indicator Chip -->
+<div class="absolute top-8 left-1/2 -translate-x-1/2 bg-on-background/80 text-white px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10 z-10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">photo_size_select_large</span>
+<span class="font-dimension-mono text-dimension-mono uppercase">Standard 6" x 4" Sheet (8 Photos)</span>
+</div>
+<!-- Print Sheet (White Canvas) -->
+<div class="photo-sheet bg-white shadow-2xl relative grid grid-cols-4 grid-rows-2 p-6 gap-4 border border-outline-variant">
+<!-- Repeated Passport Photo Units -->
+<!-- Item 1 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover grayscale-0" data-alt="A professional passport-style headshot of a woman with a neutral expression and clear lighting, set against a plain light gray background. The image is crisp and centered, adhering to technical identification photo standards with a high-key, modern aesthetic. Warm skin tones and sharp details create a sense of professional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcCvWDqPX0XEOPp-K9lAsvUzvtSUfaKAXhd3L5hwoohd4vmRYoy-z3dt3X3wC4pfducUGPfHRUgB0NIjvmGEpSEgEs5XF4k31_zmWXXRJ82f2R2pVM-NKBOEqiFB5z_0IG3R1N400XbLJe7P82Lr0FRbOAv_JjUP-gZxpvPz8mUdjRs871YuGI3j5AAWovnkG80TLWiiS2OpGUmc_7Bz0peiq-T4DM1EakRoexr8wXptpzZoqXoCROWkLVH_fzAkuXUgFDT94AZUM"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Item 2 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of a woman for identification documents, showing shoulders and head clearly against a seamless studio backdrop. Bright, even lighting illuminates the face without harsh shadows, maintaining a clean and minimalist photographic style. The composition is precise and calibrated for official use." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOsSpuajDzBs4-fU7UaWINzjByFpEfEl-rOsDTxIAYjC1mJ3zf2LoqDG49bJ-EMLSY0yjd38B741Jbj-Cm_jwaDMgUcyxNt_S3cAbPaNUuFi8vdhT_m7kiC70GCs_P5ShkM-FDVqYZW5EtbQUJ6eYR6YobwttMWufMKRh4dqcYX1-EUg8eXcjtVLslApc0IQfbwMMy-zKtJBtwmz9xiMSnKG6tpQ2rcEFQivBtwEFTsdfsfUQKtaCuJG4pe7o-oCUlDNaal9veEC0"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Item 3 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High fidelity headshot portrait suitable for a passport, featuring a subject with a calm expression. The visual style is technical and precise, with a focus on facial features and clear boundaries. Minimalist lighting setup ensures compliance with official document requirements while maintaining a sophisticated, high-end feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwsZnpaB_lmAdAFDx0TP1Hrxt3fxk0gyprFOa0ODbjRY4pPhoIBydAZXlmhnXEGb8ppFXPpQoFoG5vdey_J6_O-LJgxQil1kwOvmsFI7L9TeTFpU4LDDrxuxKn1-1ORK_weHyfDh-REF6bZkcbw-KX6PgCnOAXqQOXY6hGUaXBhkYOiLcxt3tut7OSVs1VLKGjBxqbszfXTIthboMzvOKNaQMNQXgjuCKCnIxlV1NtArGoQStVGB02MrHGhKdWbKFMenT9sHhbHxc"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Item 4 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional identification photo with balanced lighting and a neutral white background. The subject is perfectly centered within the frame, showcasing a high-quality, modern corporate photographic approach. The image quality is sharp, emphasizing clarity and accuracy for high-end printing applications." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy3p4uL5-Rr_8HH_LRZIRQxMf3M1XBP-RjUJHxt51RjVATOl51ek6s6kZLo43wGWBeWWK-NJWmkXcV3JYKJJB_UMyy5UB0-YQrycr11BjKQmF0BiySlki3VWdglZwgWZKrYjmT583idc7_kbgWvYpXVTy7pvn7x0JR1HJc6L06tSFWcYxtd3NfYocAO1lLcVPUd5qvO3Weg8uqIRQ7wWbdvw-a5tuyOoZlCsh2QnhoW3Ogb-ChT6m76_HQ6Z4U82gYwOZW9_nhcX4"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Item 5 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Clean and technical passport portrait layout. The image features soft diffused light that creates a professional, trustworthy appearance. The background is a flat, non-reflective neutral tone, ensuring the subject remains the primary focus of the composition. Detail is rendered with surgical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWYATmLDk9ARcBBF5xdQx1dVRQoqHoXoJLwwmnGPYc3gaKajEpmwfHZ9_DUQtIw0B-18Qe5fWORdwVbfk1-BvZ-0tk4B31LHRZ3WIbb7U_gc0JRYvEi9-s-rn9aezpyZhvBDLWIQasv5EU3wZiEmKFzNCHR_xzSNxdEKuhYM-1SNLSoqHrL3ha06mP4yTmLCT3Nd7_Ig5IyJ6FFWI4e8ICPFwEQcuYKLPYKi8UAL9fmqETIdZ1UJi1ElsExLUvxmVTQO-4N6rnHlw"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Item 6 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Technical headshot for official documentation, displaying a high-contrast yet soft-light aesthetic. The portrait is centered and aligned perfectly with professional framing standards. The mood is clinical yet approachable, utilizing a palette of natural skin tones against a pristine, bright studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz4jfhBsfarxefjg_jHY0sEO5vRATexs_I0GwOHgLr0pFtrRgrGBBxJUVmerUNInyu2ym8IVe8_InITlfhUPu77VXmJJw3pVelGBHdDdfSj3PFcHbmDnB3Jd5ZNzOrkinVuPF0L2PN_0z6vOGRK9JTV-fTwNUJOO1a0KI3eprKYiIfIY71Xgw07jEmB1g2bwyMxetqhQWFHpdsEHhllFB5-jzqhklbMtCcBeNsiHHdqPFI6nbNBwwfT1cQnOsuufWJ9R2BT-DhaEI"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Item 7 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A repetitive passport photo tile on a print sheet, showing a high-fidelity image of a person with clear facial features. The lighting is bright and modern, creating a professional light-mode aesthetic that pop against the clean white paper background. The composition follows strict technical guidelines for identity documents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLZo8zj-I_8S8RcDdzxog5rZbAUdCnKX2-XZmRpOzRr51YbN9KY3yCFTX_0CpevnZdjExrihg6GfxSQC_uR_EhSXUl4CUTkk2vbNEgG3h9Epe5cC3i1DdwWgVlVLTdmf_znSluUsLfIc1dpiTQEuXFr7Rdc3duOhe-HamAx4G9M3K353oP5iW5mLHzzU24wtBXJFlaGmCm6D2jgv6Vgz57ubJfTnNPeSO5IwElfdPTOsgWWcINO1NalyDFT9Zigxe84R_LII2llm0"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Item 8 -->
+<div class="relative w-full aspect-[35/45] bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional studio portrait for passport identification. The lighting is perfectly balanced to avoid glare on the skin, maintaining a natural and authentic look. The photo is tightly framed and sharp, demonstrating the precision of a modern high-end photo printing application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUS4UI4l9hfzlrVFtLWAOBeFVKawFeYhukQFt8bzTboInOndb9aIG_sI-tfvfUogkONEdBg1Sjw1e16FFf2bA3Re5eBb1uYXLLgEd_5giXhLASX0CUnfYScAXB9O3C0PztyczexUV4IT3thDBxtpzUgfpYRxsu7WQBJTC2DYKFAyLo9XoLCX_kPdvwpv4yqVxkvg4app1k0cgv6UATNXfYjlptJfN7S-s1DlrRytNRh73LWM6Mnd3wrpswBk8nYGUouwLQskB8Ga0"/>
+<div class="absolute inset-0 cut-boundary m-1"></div>
+</div>
+<!-- Safe Zone Indicator (Layered over the grid) -->
+<div class="absolute inset-0 pointer-events-none border-[1px] border-dashed border-on-surface-variant/20 m-4"></div>
+</div>
+<!-- Action Floating Area (Custom layout for print primary buttons) -->
+<div class="mt-12 flex gap-4">
+<button class="bg-surface-container-highest hover:bg-surface-container text-primary font-bold px-8 py-3 rounded-lg border border-outline-variant transition-all flex items-center gap-3">
+<span class="material-symbols-outlined">download</span>
+<span class="font-label-md">Download PDF</span>
+</button>
+<button class="bg-primary hover:bg-primary-container text-white font-bold px-10 py-3 rounded-lg shadow-xl hover:shadow-2xl transition-all flex items-center gap-3 active:scale-95">
+<span class="material-symbols-outlined">print</span>
+<span class="font-label-md">Print Now</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar (Toolbar for Canvas Actions) -->
+<nav class="fixed bottom-0 right-0 w-full md:w-[calc(100%-320px)] z-50 flex justify-around items-center h-20 bg-surface-container-highest border-t border-outline-variant dark:border-outline shadow-lg">
+<button class="text-on-surface-variant dark:text-surface-variant flex flex-col items-center justify-center hover:bg-surface-container dark:hover:bg-inverse-surface rounded-xl px-6 h-full transition-transform active:translate-y-0.5">
+<span class="material-symbols-outlined">undo</span>
+<span class="text-label-sm font-label-sm">Undo</span>
+</button>
+<button class="text-on-surface-variant dark:text-surface-variant flex flex-col items-center justify-center hover:bg-surface-container dark:hover:bg-inverse-surface rounded-xl px-6 h-full transition-transform active:translate-y-0.5">
+<span class="material-symbols-outlined">rotate_90_degrees_ccw</span>
+<span class="text-label-sm font-label-sm">Rotate</span>
+</button>
+<button class="text-on-surface-variant dark:text-surface-variant flex flex-col items-center justify-center hover:bg-surface-container dark:hover:bg-inverse-surface rounded-xl px-6 h-full transition-transform active:translate-y-0.5">
+<span class="material-symbols-outlined">crop_free</span>
+<span class="text-label-sm font-label-sm">Auto-Crop</span>
+</button>
+<button class="text-primary dark:text-primary-fixed-dim flex flex-col items-center justify-center hover:bg-surface-container dark:hover:bg-inverse-surface rounded-xl px-6 h-full transition-transform active:translate-y-0.5">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+<span class="text-label-sm font-label-sm">Save</span>
+</button>
+</nav>
+</div>
+</body></html>

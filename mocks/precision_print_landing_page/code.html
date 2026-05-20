@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Print - Professional Passport Photo Tool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .photo-canvas-bg {
+            background-image: radial-gradient(#c3c6d7 0.5px, transparent 0.5px);
+            background-size: 16px 16px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-container": "#6cf8bb",
+                    "surface-container": "#e5eeff",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-tint": "#0053db",
+                    "primary-container": "#2563eb",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#dce9ff",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface": "#f8f9ff",
+                    "secondary": "#006c49",
+                    "primary": "#004ac6",
+                    "on-secondary-container": "#00714d",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed": "#dbe1ff",
+                    "on-background": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-container-highest": "#d3e4fe",
+                    "outline": "#737686",
+                    "inverse-surface": "#213145",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-container": "#bc4800",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-container": "#ffede6",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-primary-container": "#eeefff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed": "#002113",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-surface-variant": "#434655",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#943700",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "canvas-padding": "48px",
+                    "base": "8px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "dimension-mono": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "dimension-mono": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-desktop h-16 w-full fixed top-0 z-50">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Precision Print</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Pricing</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Sizes</a>
+<a class="text-label-md font-label-md text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1" href="#">Help</a>
+<div class="ml-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</div>
+</nav>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-surface py-24 px-margin-desktop min-h-[819px] flex flex-col items-center justify-center text-center">
+<div class="absolute inset-0 photo-canvas-bg opacity-30 -z-10"></div>
+<div class="max-w-4xl mx-auto">
+<h1 class="font-headline-lg text-[48px] md:text-[64px] leading-tight text-on-background mb-6 tracking-tighter">
+                    Perfect Passport Photos. <br/><span class="text-primary">Every Single Time.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    Professional-grade cropping and validation for government-standard documents. AI-powered alignment ensures your application is never rejected.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-lg font-label-md text-body-md flex items-center gap-3 shadow-lg hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+                        Upload Photo
+                    </button>
+<button class="border-2 border-primary text-primary px-10 py-5 rounded-lg font-label-md text-body-md hover:bg-surface-container-low transition-all">
+                        View Sample
+                    </button>
+</div>
+<div class="mt-12 flex flex-wrap justify-center gap-6">
+<div class="flex items-center gap-2 text-on-surface-variant opacity-75">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-label-sm font-label-sm">Compliance Guaranteed</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant opacity-75">
+<span class="material-symbols-outlined text-[18px]" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-label-sm font-label-sm">Instant Processing</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant opacity-75">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-sm font-label-sm">Expert Review Available</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Supported Sizes Bento Grid -->
+<section class="py-24 px-margin-desktop bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-background mb-2">Supported Formats</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Global compliance for over 150 countries.</p>
+</div>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+                        See all sizes <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-base">
+<!-- US Visa Card -->
+<div class="bg-surface-container-lowest p-gutter rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-primary-container/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</div>
+<span class="bg-surface-container text-primary font-dimension-mono text-dimension-mono px-2 py-1 rounded">2x2 in</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">US Visa / Passport</h3>
+<p class="font-body-md text-label-sm text-on-surface-variant mb-6">Standard 51x51mm square format with specific head size requirements (1" to 1.375").</p>
+<div class="aspect-[4/3] rounded-lg bg-surface-container overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a woman looking directly at the camera with a neutral expression, set against a clean white background. The lighting is soft and even, mimicking official government passport photo requirements. The image is crisp and clear, illustrating high-end photo printing quality and precision alignment in a modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsCppyaMZTXBNKz27A7pREATsjr9sdZUkR-w9N9bzkS-Pb9siiyrmvIkt_W1KVUk8yyRAnAybglmYyOHtl6BlJuKpzVNNjbAyZuiiQO03y6R2PoVbtMjr0i_UxAK7jGsXLf7SrQ8Z1uJjVIvHlPSEjTrQIFmbyj2l4tlGOjeRmbnfIOlV_FiAr28QPxJehAXCDd9VVzwf1dXCxrdhg6PVLKSfWEfrfihpuNFbAf0gSzMHEKjjn0fvNmmXpCvM32--xLarbwWQZEDU"/>
+<div class="absolute inset-0 border-[1.5pt] border-dashed border-[#ba1a1a] m-4 pointer-events-none"></div>
+</div>
+</div>
+<!-- Schengen Card -->
+<div class="bg-surface-container-lowest p-gutter rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-secondary-container/20 rounded-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="euro">euro</span>
+</div>
+<span class="bg-surface-container text-primary font-dimension-mono text-dimension-mono px-2 py-1 rounded">35x45 mm</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">Schengen Visa</h3>
+<p class="font-body-md text-label-sm text-on-surface-variant mb-6">The standard European biometric format used across 27 countries for visas and IDs.</p>
+<div class="aspect-[4/3] rounded-lg bg-surface-container overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A close-up headshot of a man with a serious expression suitable for a biometric document, photographed against a neutral grey studio backdrop. The lighting is diffused to eliminate harsh shadows, adhering to technical European passport standards. The photograph has a clean, professional aesthetic with high contrast and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaYW4gEGdnvEutU7HrEc-dUqpAHQg1fJfy-kOqzdng-3Dp_II7g-qB3DAHiwH-F9kCLr16JiTlmmEiHNpFmM_ZFWPiFWtYzyma8yFgxeK__F6EpwyTSZparbXZAnVziWlPchTEc_4e0Lj7xTtl4cB91gfsJl3KP50JD3XsQHzIOwqQVWJpNUy67PfuZ5HzfigMkM12AqZesFWeEJq4HObcul82X0eEl9pR-qQ0q2XTEA3kIhcWPZRrjgPL6PLexWvr-HpjUKBx9YA"/>
+<div class="absolute inset-0 border-[1.5pt] border-dashed border-[#ba1a1a] m-4 pointer-events-none"></div>
+</div>
+</div>
+<!-- UK Card -->
+<div class="bg-surface-container-lowest p-gutter rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-6">
+<div class="p-3 bg-tertiary-fixed/40 rounded-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="uk_guide">tv_guide</span>
+</div>
+<span class="bg-surface-container text-primary font-dimension-mono text-dimension-mono px-2 py-1 rounded">35x45 mm</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-2">UK Passport</h3>
+<p class="font-body-md text-label-sm text-on-surface-variant mb-6">High-precision UK standards including specific contrast and background rules.</p>
+<div class="aspect-[4/3] rounded-lg bg-surface-container overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A high-resolution passport-style portrait of a professional individual against a solid, light grey background. The lighting is flat and professional, specifically designed to meet UK passport regulations without any glares or shadows. The visual style is minimal and tool-centric, emphasizing the clarity and technical accuracy of the image." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzzupnEDxipHFwpsGyRdpgisH_8fu4EjiwESUvbbsMPqIAzrTdjS3ftULYexFlDXhN9gIuyK7pE6PO8YMNxkTpq7LMjOM0ASaljeidTh9cJoru0z0XaEbQFJA7Zn36niPasJ2RwKWJC5DSeAP-1N2J8hbHcNp4bXqSUkDrGWaZt2u2E4QuRjSKnqe2Eo-td3A_Si7MloBWtZ3rbVcYWk1PpPFds2IbTfSwCnQBP8MlIqNH7xJJIDo71W5ph2-kgWmkhyUWcZc3fdM"/>
+<div class="absolute inset-0 border-[1.5pt] border-dashed border-[#ba1a1a] m-4 pointer-events-none"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-24 px-margin-desktop bg-surface">
+<div class="max-w-4xl mx-auto text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-on-background mb-4">Three Steps to Perfection</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Simple, fast, and compliant. No photography skills required.</p>
+</div>
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-headline-sm mb-6">1</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Upload &amp; Select</h3>
+<p class="font-body-md text-label-md text-on-surface-variant">Upload any photo from your phone or camera. Select the country and document type.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-headline-sm mb-6">2</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">AI Auto-Crop</h3>
+<p class="font-body-md text-label-md text-on-surface-variant">Our smart tool automatically aligns your face and crops to the exact required dimensions.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-headline-sm mb-6">3</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Download &amp; Print</h3>
+<p class="font-body-md text-label-md text-on-surface-variant">Get a digital file for online applications or a printable sheet with multiple photos.</p>
+</div>
+</div>
+<!-- Visual Progress Stepper Mockup -->
+<div class="max-w-5xl mx-auto mt-20 p-base bg-surface-container rounded-2xl shadow-sm border border-outline-variant/30">
+<div class="bg-surface-container-lowest rounded-xl p-gutter overflow-hidden">
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden mb-8">
+<div class="h-full w-2/3 bg-secondary rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mb-10">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md">Step 2: Auto-Aligning...</span>
+</div>
+<span class="font-dimension-mono text-dimension-mono text-secondary">67% Complete</span>
+</div>
+<div class="aspect-video rounded-lg bg-surface-dim flex items-center justify-center relative photo-canvas-bg border border-outline-variant/50">
+<div class="relative w-48 h-64 bg-surface-container-lowest shadow-xl border border-outline-variant/50 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover opacity-80" data-alt="A clean, professionally lit headshot of a smiling woman used as a demonstration within a photo editing tool interface. The image is framed by a minimalist digital UI, showing alignment guides and safe zone boundaries. The overall aesthetic is clean, technical, and dependable, highlighting the precision of the printing service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6P4SxspHWWVytl3VwWg7IjT2JRj4K3kfSYbNDqM1MGtb4wOSBL6eZeQRbfFbtLvnPiIa5KIAkfP2a4B8s91LIAD7PnNgQcD70H1PhrIrgXjLY2gDKorRbS0S1AwurSDcKGG0ub8NQ-EfvaW9DIawEEHQIW5A_BDFH3IAGIm-ucWV8KYtOfLRzXfYo998EUXYvGooHKApsCwqUjO4j0jfoiKDJjVxYoa3S-CU32xPP-Uxpsa7QyOs3EE932oLp7cVf_FJFpw73efE"/>
+<div class="absolute inset-0 border-2 border-primary/40 pointer-events-none"></div>
+<!-- Safe zone dashed lines -->
+<div class="absolute top-[15%] left-[10%] right-[10%] bottom-[10%] border border-dashed border-outline-variant pointer-events-none"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-margin-desktop bg-primary text-on-primary">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="font-headline-lg text-headline-lg mb-6">Ready to print with precision?</h2>
+<p class="font-body-lg text-body-lg mb-10 opacity-90">Join thousands of users who trust us for their official document photos. Get started for free today.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-surface-container-lowest text-primary px-10 py-5 rounded-lg font-label-md text-body-md hover:bg-on-primary-container transition-all">
+                        Get Started Now
+                    </button>
+<button class="bg-primary border border-on-primary text-on-primary px-10 py-5 rounded-lg font-label-md text-body-md hover:bg-on-primary-fixed-variant transition-all">
+                        Support Center
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Simple Footer -->
+<footer class="bg-surface-container-lowest py-16 px-margin-desktop border-t border-outline-variant">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div>
+<div class="text-headline-md font-headline-md font-bold text-primary mb-4">Precision Print</div>
+<p class="text-label-sm text-on-surface-variant max-w-xs">The world's most trusted tool for passport and visa photo preparation. Quality you can count on.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div>
+<h4 class="font-label-md text-on-background mb-4">Product</h4>
+<ul class="space-y-2 text-label-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">Photo Editor</a></li>
+<li><a class="hover:text-primary" href="#">Templates</a></li>
+<li><a class="hover:text-primary" href="#">Bulk Print</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-background mb-4">Company</h4>
+<ul class="space-y-2 text-label-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Privacy</a></li>
+<li><a class="hover:text-primary" href="#">Terms</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-1">
+<h4 class="font-label-md text-on-background mb-4">Contact</h4>
+<ul class="space-y-2 text-label-sm text-on-surface-variant">
+<li>support@precisionprint.io</li>
+<li>Live Chat (24/7)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-base border-t border-outline-variant text-label-sm text-on-surface-variant text-center">
+            © 2024 Precision Print. All rights reserved.
+        </div>
+</footer>
+</body></html>

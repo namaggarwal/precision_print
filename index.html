@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Print</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#004ac6",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "secondary": "#006c49",
+                        "secondary-container": "#6cf8bb",
+                        "on-secondary-container": "#00714d",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface-variant": "#434655",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline": "#737686",
+                        "outline-variant": "#c3c6d7",
+                        "error": "#ba1a1a"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "base": "8px",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-on-surface font-sans h-screen flex flex-col overflow-hidden">
+    <!-- Top Nav -->
+    <header
+        class="bg-surface-container-lowest border-b border-outline-variant h-16 w-full flex justify-between items-center px-8 z-50 shrink-0">
+        <div class="text-xl font-bold text-primary">Precision Print</div>
+        <!-- Progress Stepper -->
+        <div class="hidden md:flex items-center gap-4" id="stepper">
+            <!-- Steps generated via JS -->
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-primary cursor-pointer text-3xl">account_circle</span>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <div id="app-container" class="flex flex-1 overflow-hidden relative">
+        <!-- Landing View -->
+        <div id="view-landing"
+            class="absolute inset-0 bg-surface flex flex-col items-center justify-center p-8 z-40 transition-opacity duration-300">
+            <h1 class="text-5xl font-bold mb-6 text-center">Perfect Passport Photos. <br><span
+                    class="text-primary">Every Single Time.</span></h1>
+            <p class="text-on-surface-variant mb-10 text-center max-w-xl">Professional-grade cropping and validation for
+                government-standard documents.</p>
+            <label
+                class="bg-primary text-on-primary px-8 py-4 rounded-lg font-semibold flex items-center gap-2 cursor-pointer shadow-lg hover:bg-primary-container transition-colors">
+                <span class="material-symbols-outlined">cloud_upload</span>
+                Upload Photo
+                <input type="file" id="upload-input" accept="image/*" class="hidden">
+            </label>
+        </div>
+
+        <!-- Editor View -->
+        <div id="view-editor"
+            class="flex w-full h-full opacity-0 pointer-events-none transition-opacity duration-300 absolute inset-0 z-30">
+            <!-- Sidebar -->
+            <aside
+                class="w-80 bg-surface-container-low border-r border-outline-variant p-4 flex flex-col gap-4 overflow-y-auto z-10 shrink-0">
+                <h2 class="font-bold text-lg text-primary">Configuration</h2>
+
+                <div class="flex flex-col gap-1 mt-4">
+                    <label class="text-sm font-semibold text-on-surface-variant">Photo Document Type</label>
+                    <select id="doc-type-select"
+                        class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-2 text-sm focus:border-primary outline-none">
+                        <option value='{"w":35,"h":45,"name":"Schengen Visa / UK Passport"}'>Schengen Visa / UK Passport
+                            (35x45mm)</option>
+                        <option value='{"w":51,"h":51,"name":"US Visa / Passport"}'>US Visa / Passport (2x2 inch)
+                        </option>
+                        <option value='{"w":35,"h":35,"name":"India Passport"}'>India Passport (35x35mm)</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-1 mt-4">
+                    <label class="text-sm font-semibold text-on-surface-variant">Print Base Size</label>
+                    <select id="print-size-select"
+                        class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-2 text-sm focus:border-primary outline-none">
+                        <option value='{"w":152.4,"h":101.6,"name":"Standard 6x4"}'>Standard 6x4 (15.2 x 10.1 cm)
+                        </option>
+                        <option value='{"w":177.8,"h":127,"name":"Portrait 7x5"}'>Portrait 7x5 (17.8 x 12.7 cm)</option>
+                        <option value='{"w":210,"h":297,"name":"A4 Sheet"}'>A4 Sheet (21.0 x 29.7 cm)</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-1 mt-4">
+                    <div class="flex justify-between items-center">
+                        <label class="text-sm font-semibold text-on-surface-variant">Zoom</label>
+                        <span id="zoom-val" class="text-sm font-mono">100%</span>
+                    </div>
+                    <input type="range" id="zoom-slider" min="10" max="300" value="100" class="w-full accent-primary">
+                </div>
+
+                <div class="flex items-center justify-between mt-4">
+                    <span class="text-sm font-semibold text-on-surface-variant">Show Cut Boundaries</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="cut-boundary-toggle" class="sr-only peer" checked>
+                        <div
+                            class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                        </div>
+                    </label>
+                </div>
+
+                <div class="mt-auto flex flex-col gap-2">
+                    <button id="btn-preview"
+                        class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">visibility</span> Preview Print
+                    </button>
+                    <button id="btn-back-upload"
+                        class="w-full bg-surface-container-highest text-on-surface py-3 rounded-lg font-bold hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">arrow_back</span> Back
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Editor Canvas -->
+            <main
+                class="flex-1 bg-surface-container canvas-bg relative flex flex-col items-center justify-center overflow-hidden">
+                <!-- Info overlay -->
+                <div id="editor-info"
+                    class="absolute top-4 left-4 z-20 bg-on-surface/80 text-white px-3 py-1 rounded-full text-xs font-mono flex items-center gap-2">
+                    <span id="editor-mask-name">Schengen Mask Active</span>
+                    <div class="w-px h-3 bg-white/30"></div>
+                    <span id="editor-mask-dims">35 x 45 mm</span>
+                </div>
+
+                <!-- Cropping area -->
+                <div class="relative flex items-center justify-center w-full h-full" id="crop-container-wrapper">
+                    <!-- This will hold the mask and image -->
+                    <div id="crop-container"
+                        class="relative overflow-hidden bg-white shadow-2xl touch-none cursor-move">
+                        <img id="crop-image" src="" class="absolute max-w-none origin-top-left pointer-events-none"
+                            style="transform: translate(0px, 0px) scale(1);">
+                        <!-- Mask overlay -->
+                        <div class="absolute inset-0 pointer-events-none"
+                            style="box-shadow: 0 0 0 9999px rgba(11,28,48,0.5);"></div>
+                        <div class="absolute inset-0 pointer-events-none border-2 border-dashed border-error"></div>
+                        <!-- Head guide lines -->
+                        <div
+                            class="absolute inset-0 pointer-events-none flex flex-col justify-center items-center opacity-50 border border-dashed border-white m-2">
+                            <div class="w-16 h-24 border border-white/70 rounded-[50%]"></div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="absolute bottom-4 text-on-surface-variant text-sm font-medium bg-white/80 px-4 py-2 rounded-full shadow-sm">
+                    Drag photo to reposition. Use sidebar to zoom.
+                </div>
+            </main>
+        </div>
+
+        <!-- Preview View -->
+        <div id="view-preview"
+            class="flex w-full h-full opacity-0 pointer-events-none transition-opacity duration-300 absolute inset-0 z-20">
+            <!-- Sidebar -->
+            <aside
+                class="w-80 bg-surface-container-low border-r border-outline-variant p-4 flex flex-col gap-4 overflow-y-auto shrink-0">
+                <h2 class="font-bold text-lg text-primary">Print Preview</h2>
+
+                <div class="bg-surface-container-lowest border border-primary p-4 rounded-xl shadow-sm mt-4">
+                    <h4 class="font-bold text-on-surface" id="preview-print-name">Standard 6x4</h4>
+                    <p class="text-sm text-on-surface-variant" id="preview-photo-count">8 Photos per sheet</p>
+                    <div class="mt-2 text-primary font-bold text-sm" id="preview-print-dims">15.2 x 10.1 cm</div>
+                </div>
+
+                <div class="bg-surface-container-high p-4 rounded-xl mt-4 text-sm text-on-surface-variant">
+                    Photos are automatically tiled to maximize paper usage.
+                </div>
+
+                <div class="mt-auto flex flex-col gap-2">
+                    <button id="btn-print"
+                        class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2 shadow-md">
+                        <span class="material-symbols-outlined">print</span> Print Now
+                    </button>
+                    <button id="btn-download-sheet"
+                        class="w-full bg-surface-container-highest text-on-surface py-3 rounded-lg font-bold hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">download</span> Download Print Sheet
+                    </button>
+                    <button id="btn-download-single"
+                        class="w-full bg-surface-container-highest text-on-surface py-3 rounded-lg font-bold hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">download</span> Download Single Photo
+                    </button>
+                    <button id="btn-back-editor"
+                        class="w-full bg-surface-container-highest text-on-surface py-3 rounded-lg font-bold hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">edit</span> Back to Editor
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Preview Canvas -->
+            <main class="flex-1 bg-surface-container-high relative flex items-center justify-center overflow-auto p-8">
+                <!-- Paper container -->
+                <div id="paper-container"
+                    class="bg-white shadow-2xl relative transition-transform duration-300 origin-center"
+                    style="width: 600px; height: 400px;">
+                    <!-- Photos will be tiled here by JS -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

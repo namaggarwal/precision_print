@@ -1,0 +1,55 @@
+.canvas-bg {
+    background-image: radial-gradient(#c3c6d7 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.cut-boundary {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.cut-boundary::before, .cut-boundary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+/* Horizontal segments at corners */
+.cut-boundary::before {
+    background: 
+        linear-gradient(#9ca3af, #9ca3af) top left / 12px 1px no-repeat,
+        linear-gradient(#9ca3af, #9ca3af) top right / 12px 1px no-repeat,
+        linear-gradient(#9ca3af, #9ca3af) bottom left / 12px 1px no-repeat,
+        linear-gradient(#9ca3af, #9ca3af) bottom right / 12px 1px no-repeat;
+}
+
+/* Vertical segments at corners */
+.cut-boundary::after {
+    background: 
+        linear-gradient(#9ca3af, #9ca3af) top left / 1px 12px no-repeat,
+        linear-gradient(#9ca3af, #9ca3af) top right / 1px 12px no-repeat,
+        linear-gradient(#9ca3af, #9ca3af) bottom left / 1px 12px no-repeat,
+        linear-gradient(#9ca3af, #9ca3af) bottom right / 1px 12px no-repeat;
+}
+
+.safe-zone {
+    border: 1px dashed #737686;
+}
+
+/* Hide scrollbar for clean UI */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #c3c6d7;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #737686;
+}

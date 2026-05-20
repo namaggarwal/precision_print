@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Print - Passport Photo Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .canvas-bg {
+            background-color: #e5eeff;
+            background-image: radial-gradient(#c3c6d7 0.5px, transparent 0.5px);
+            background-size: 16px 16px;
+        }
+        .visa-mask {
+            border: 2px dashed #ba1a1a;
+            box-shadow: 0 0 0 5000px rgba(11, 28, 48, 0.4);
+            outline: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .safe-zone {
+            border: 1px dashed #737686;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#b4c5ff",
+                      "secondary-container": "#6cf8bb",
+                      "surface-container": "#e5eeff",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "surface-tint": "#0053db",
+                      "primary-container": "#2563eb",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface": "#f8f9ff",
+                      "secondary": "#006c49",
+                      "primary": "#004ac6",
+                      "on-secondary-container": "#00714d",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-primary-fixed": "#00174b",
+                      "primary-fixed": "#dbe1ff",
+                      "on-background": "#0b1c30",
+                      "surface-container-low": "#eff4ff",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-container-highest": "#d3e4fe",
+                      "outline": "#737686",
+                      "inverse-surface": "#213145",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-surface": "#0b1c30",
+                      "background": "#f8f9ff",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary-container": "#bc4800",
+                      "inverse-primary": "#b4c5ff",
+                      "on-tertiary-container": "#ffede6",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-primary-container": "#eeefff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-secondary-fixed": "#002113",
+                      "outline-variant": "#c3c6d7",
+                      "surface-dim": "#cbdbf5",
+                      "tertiary": "#943700",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-surface-variant": "#434655",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "canvas-padding": "48px",
+                      "base": "8px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "dimension-mono": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "dimension-mono": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-desktop h-16 w-full fixed top-0 z-[60]">
+<div class="flex items-center gap-base">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">Precision Print</span>
+</div>
+<!-- Progress Stepper -->
+<div class="hidden md:flex items-center gap-gutter">
+<div class="flex items-center gap-base">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-label-sm font-label-sm">1</span>
+<span class="text-on-surface-variant font-label-md text-label-md">Upload</span>
+</div>
+<div class="w-12 h-1 bg-secondary rounded-full"></div>
+<div class="flex items-center gap-base">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm font-label-sm">2</span>
+<span class="text-primary font-label-md text-label-md">Edit</span>
+</div>
+<div class="w-12 h-1 bg-surface-variant rounded-full"></div>
+<div class="flex items-center gap-base">
+<span class="w-6 h-6 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center text-label-sm font-label-sm">3</span>
+<span class="text-on-surface-variant font-label-md text-label-md">Print</span>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary dark:hover:text-primary-fixed-dim transition-colors">Help</button>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer" style="font-size: 28px;">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar (Workflow) -->
+<aside class="bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline w-[320px] h-screen fixed left-0 top-16 flex flex-col p-base gap-base z-50">
+<div class="px-base py-gutter">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Workflow</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Passport Photo Tool</p>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="flex items-center gap-gutter p-base text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">cloud_upload</span>
+<span class="text-label-md font-label-md">Upload</span>
+</div>
+<div class="flex items-center gap-gutter p-base bg-secondary-container text-on-secondary-container rounded-lg font-bold">
+<span class="material-symbols-outlined">edit</span>
+<span class="text-label-md font-label-md">Edit</span>
+</div>
+<div class="flex items-center gap-gutter p-base text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">visibility</span>
+<span class="text-label-md font-label-md">Preview</span>
+</div>
+<div class="flex items-center gap-gutter p-base text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">print</span>
+<span class="text-label-md font-label-md">Print</span>
+</div>
+</nav>
+<div class="mt-auto p-base bg-surface-container-high rounded-xl flex flex-col gap-gutter">
+<div>
+<label class="text-label-sm font-label-sm text-on-surface-variant mb-1 block">Target Size</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-base text-label-md focus:ring-primary focus:border-primary">
+<option selected="">Schengen Visa (35x45mm)</option>
+<option>US Passport (2x2 inch)</option>
+<option>India Passport (35x35mm)</option>
+<option>Custom Dimension...</option>
+</select>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Zoom</label>
+<span class="text-label-sm font-dimension-mono">115%</span>
+</div>
+<input class="w-full h-2 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Quick Actions</label>
+<div class="grid grid-cols-2 gap-base">
+<button class="flex items-center justify-center gap-1 py-base px-base border border-outline-variant rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[20px]">rotate_90_degrees_ccw</span>
+<span class="text-label-sm">Rotate</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-base px-base border border-outline-variant rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[20px]">crop_free</span>
+<span class="text-label-sm">Auto-Crop</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-gutter rounded-xl font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-base">
+<span class="material-symbols-outlined">check_circle</span>
+                Confirm Composition
+            </button>
+</div>
+</aside>
+<!-- Main Workspace (Canvas) -->
+<main class="ml-[320px] mt-16 h-[calc(100vh-64px-80px)] canvas-bg relative flex items-center justify-center p-canvas-padding overflow-hidden">
+<!-- Dimensions Chip -->
+<div class="absolute top- gutter left-gutter z-20 bg-on-background/80 text-surface-container-lowest px-base py-1 rounded-full text-dimension-mono flex items-center gap-base">
+<span>Schengen Mask Active</span>
+<div class="w-px h-3 bg-surface-variant/30"></div>
+<span>35 x 45 mm</span>
+</div>
+<!-- The Photo Product & Workspace -->
+<div class="relative max-w-full max-h-full flex items-center justify-center">
+<!-- Photo Paper -->
+<div class="bg-surface-container-lowest p-2 shadow-2xl relative">
+<div class="relative overflow-hidden w-[400px] h-[520px] flex items-center justify-center">
+<img alt="Portrait for visa application" class="object-cover h-full scale-110" data-alt="A professional studio portrait of a woman with a neutral expression, positioned against a seamless light gray background. The lighting is balanced and soft, characteristic of official identification photography, highlighting clear facial features without harsh shadows. The overall composition is centered, designed for a passport or visa editing interface, maintaining a sharp and clean aesthetic with high-fidelity detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp6ZUucr56mGEfhOD8LP_d0d0CMBiImFug-u4_sQFfAM5c-mPSe8h2Hyi7WS-fYgxcLGWJuMgMnOHy5rGWYRaZNVH9738Bb6sdjQdO6JNq4OBBgdSBvMUb9aMrvBVHq7mJ6OVYNlI925j4ZvfU_K0519RNijwPWVF7Wf9cq2P4n6_cspyYSA6RphGkX-1WvogkSb2QbqHjZTL-GQ3JhCPhEMXlmU7uVrUROiscFU3tidibk2OOc8FLn1h6PVPuuPzEdkCaCZhLACo"/>
+<!-- Visa Mask Overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="visa-mask w-[280px] h-[360px] relative">
+<!-- Safe Zone Guideline -->
+<div class="safe-zone absolute inset-4"></div>
+<!-- Alignment Guides -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-32 h-32 border-b border-white/30 rounded-full"></div>
+<div class="absolute top-1/2 left-0 right-0 border-t border-white/30"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- On-Canvas Controls -->
+<div class="absolute -right-16 flex flex-col gap-base">
+<button class="w-10 h-10 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">zoom_out</span>
+</button>
+<div class="h-px w-6 bg-outline-variant mx-auto my-1"></div>
+<button class="w-10 h-10 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-320px)] h-20 bg-surface-container-highest dark:bg-on-background border-t border-outline-variant dark:border-outline px-canvas-padding flex justify-around items-center z-50 shadow-lg dark:shadow-none">
+<button class="text-on-surface-variant flex flex-col items-center justify-center hover:bg-surface-container rounded-xl px- gutter py-1 transition-all group">
+<span class="material-symbols-outlined group-active:translate-y-0.5 transition-transform">undo</span>
+<span class="text-label-sm font-label-sm">Undo</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center justify-center hover:bg-surface-container rounded-xl px-gutter py-1 transition-all group">
+<span class="material-symbols-outlined group-active:translate-y-0.5 transition-transform">rotate_90_degrees_ccw</span>
+<span class="text-label-sm font-label-sm">Rotate</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center justify-center hover:bg-surface-container rounded-xl px-gutter py-1 transition-all group">
+<span class="material-symbols-outlined group-active:translate-y-0.5 transition-transform">crop_free</span>
+<span class="text-label-sm font-label-sm">Auto-Crop</span>
+</button>
+<button class="text-primary dark:text-primary-fixed-dim flex flex-col items-center justify-center hover:bg-surface-container rounded-xl px-gutter py-1 transition-all group">
+<span class="material-symbols-outlined group-active:translate-y-0.5 transition-transform" style="font-variation-settings: 'FILL' 1;">save</span>
+<span class="text-label-sm font-label-sm">Save</span>
+</button>
+</footer>
+</body></html>
