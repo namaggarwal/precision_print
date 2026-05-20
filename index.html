@@ -165,6 +165,50 @@
                 </div>
             </section>
 
+            <!-- Visual Examples / Correct vs Incorrect Section -->
+            <section class="w-full max-w-4xl px-8 py-16 border-t border-outline-variant">
+                <h2 class="text-3xl font-bold text-center mb-4 text-on-surface">Photo Compliance Guidelines</h2>
+                <p class="text-center text-on-surface-variant mb-12 max-w-2xl mx-auto">
+                    Ensure your photo meets official government standards. Below is an example of what is accepted vs. what is rejected.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-2xl mx-auto">
+                    <!-- Correct Example -->
+                    <div class="flex flex-col items-center">
+                        <div class="relative w-64 h-64 rounded-2xl overflow-hidden border-4 border-emerald-500 shadow-lg">
+                            <img src="assets/correct.png" alt="Correct Compliant Passport Photo Example" class="w-full h-full object-cover">
+                            <div class="absolute top-3 left-3 bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm font-black">check_circle</span>
+                                COMPLIANT
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mt-4 text-emerald-600">Correct Photo</h3>
+                        <ul class="text-xs text-on-surface-variant mt-2 list-disc list-inside space-y-1 text-center">
+                            <li>Face is neutral, looking directly forward</li>
+                            <li>Background is plain white and shadow-free</li>
+                            <li>No glasses, hats, or facial obstructions</li>
+                        </ul>
+                    </div>
+
+                    <!-- Incorrect Example -->
+                    <div class="flex flex-col items-center">
+                        <div class="relative w-64 h-64 rounded-2xl overflow-hidden border-4 border-red-500 shadow-lg">
+                            <img src="assets/incorrect.png" alt="Incorrect Non-Compliant Passport Photo Example" class="w-full h-full object-cover">
+                            <div class="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm font-black">cancel</span>
+                                REJECTED
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mt-4 text-red-600">Incorrect Photo</h3>
+                        <ul class="text-xs text-on-surface-variant mt-2 list-disc list-inside space-y-1 text-center">
+                            <li>Head is tilted or rotated</li>
+                            <li>Wearing sunglasses or reflective eyewear</li>
+                            <li>Background is cluttered, shadowed, or colored</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <!-- Guide Section -->
             <section class="w-full max-w-4xl px-8 py-16">
                 <h2 class="text-3xl font-bold text-center mb-12">How to Crop & Print Passport Photos at Home</h2>
