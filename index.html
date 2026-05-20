@@ -4,7 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precision Print</title>
+    <title>Free Passport Photo & Visa Photo Creator Online | Schengen, US, India Visa</title>
+    <meta name="description" content="Generate government-compliant passport photos, US visa photos, Indian visa photos, and Schengen visa photos online. Automatically crop, align, zoom, and tile photos on standard printing sizes like 6x4 and A4.">
+    <meta name="keywords" content="passport photo online, visa photos, indian visa photo, schengen visa photo, passport size photo, us visa photo creator, free passport photo cropper, print passport photo 6x4">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://namaggarwal.github.io/precision_print/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Passport & Visa Photo Creator Online">
+    <meta property="og:description" content="Create compliance-ready passport and visa photos online. Crop, align, zoom, and tile to exact sizes like US Visa (2x2), Schengen (35x45mm), and Indian Visa.">
+    <meta property="og:image" content="https://namaggarwal.github.io/precision_print/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Free Passport & Visa Photo Creator Online">
+    <meta property="twitter:description" content="Crop and layout passport photos to exact specifications online for free.">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Precision Print",
+      "url": "https://namaggarwal.github.io/precision_print/",
+      "description": "Free online passport photo and visa photo generator to crop, align, and tile photos onto standard sizes (6x4, A4) for Schengen, US, India, and UK visas.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -64,17 +99,138 @@
     <div id="app-container" class="flex flex-1 overflow-hidden relative">
         <!-- Landing View -->
         <div id="view-landing"
-            class="absolute inset-0 bg-surface flex flex-col items-center justify-center p-8 z-40 transition-opacity duration-300">
-            <h1 class="text-5xl font-bold mb-6 text-center">Perfect Passport Photos. <br><span
-                    class="text-primary">Every Single Time.</span></h1>
-            <p class="text-on-surface-variant mb-10 text-center max-w-xl">Professional-grade cropping and validation for
-                government-standard documents.</p>
-            <label
-                class="bg-primary text-on-primary px-8 py-4 rounded-lg font-semibold flex items-center gap-2 cursor-pointer shadow-lg hover:bg-primary-container transition-colors">
-                <span class="material-symbols-outlined">cloud_upload</span>
-                Upload Photo
-                <input type="file" id="upload-input" accept="image/*" class="hidden">
-            </label>
+            class="absolute inset-0 bg-surface overflow-y-auto z-40 transition-opacity duration-300 flex flex-col items-center">
+            
+            <!-- Hero Section -->
+            <section class="min-h-[80vh] flex flex-col items-center justify-center px-4 py-16 max-w-4xl text-center shrink-0 w-full">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
+                    Free Passport Photo & <br>
+                    <span class="text-primary">Visa Photo Generator Online</span>
+                </h1>
+                <p class="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                    Create government-compliant biometric passport photos, US visa photos, Indian visa photos, and Schengen visa photos in seconds. Automatically crop, validate, and tile photos onto 4x6" print sheets.
+                </p>
+                <div class="flex flex-col items-center gap-4">
+                    <label
+                        class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold flex items-center gap-3 cursor-pointer shadow-xl hover:bg-primary-container transition-all hover:scale-105 transform duration-200 text-lg">
+                        <span class="material-symbols-outlined text-2xl">cloud_upload</span>
+                        Upload Your Photo
+                        <input type="file" id="upload-input" accept="image/*" class="hidden">
+                    </label>
+                    <span class="text-xs text-on-surface-variant/80">Supports JPG, PNG, WEBP. Your images are processed entirely in your browser and never uploaded to any server.</span>
+                </div>
+            </section>
+
+            <!-- Specs Grid Section -->
+            <section class="w-full max-w-6xl px-8 py-16 border-t border-outline-variant bg-surface-container-low/40">
+                <h2 class="text-3xl font-bold text-center mb-4 text-on-surface">Supported Photo & Visa Dimensions</h2>
+                <p class="text-center text-on-surface-variant mb-12 max-w-2xl mx-auto">Our generator is built to adhere to global government rules and biometric photograph guidelines.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Schengen / UK Card -->
+                    <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+                        <span class="material-symbols-outlined text-primary text-4xl mb-4">euro_symbol</span>
+                        <h3 class="text-xl font-bold mb-2">Schengen & UK Visa Photo</h3>
+                        <p class="text-sm text-on-surface-variant mb-4">Fits Schengen visa requirements (France, Germany, Italy, Spain, etc.) and UK Passport specifications.</p>
+                        <ul class="text-xs text-on-surface-variant space-y-2 border-t border-outline-variant/50 pt-4">
+                            <li><strong>Dimensions:</strong> 35mm x 45mm</li>
+                            <li><strong>Head Height:</strong> 34.5mm (70-80% of photo)</li>
+                            <li><strong>Background:</strong> Light gray or plain white</li>
+                        </ul>
+                    </div>
+
+                    <!-- US Visa Card -->
+                    <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+                        <span class="material-symbols-outlined text-primary text-4xl mb-4">public</span>
+                        <h3 class="text-xl font-bold mb-2">US Visa & Passport Photo</h3>
+                        <p class="text-sm text-on-surface-variant mb-4">Meets strict U.S. Department of State rules for visas, passport books, and Green Card application photos.</p>
+                        <ul class="text-xs text-on-surface-variant space-y-2 border-t border-outline-variant/50 pt-4">
+                            <li><strong>Dimensions:</strong> 2x2 inches (51mm x 51mm)</li>
+                            <li><strong>Head Height:</strong> 1 to 1.375 inches</li>
+                            <li><strong>Background:</strong> Off-white or plain white</li>
+                        </ul>
+                    </div>
+
+                    <!-- India Visa Card -->
+                    <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+                        <span class="material-symbols-outlined text-primary text-4xl mb-4">flag</span>
+                        <h3 class="text-xl font-bold mb-2">Indian Visa & OCI Photo</h3>
+                        <p class="text-sm text-on-surface-variant mb-4">Perfect for online Indian eVisa, physical visa, OCI (Overseas Citizenship of India), and Indian Passport templates.</p>
+                        <ul class="text-xs text-on-surface-variant space-y-2 border-t border-outline-variant/50 pt-4">
+                            <li><strong>Dimensions:</strong> 2x2 inches or 35x35mm</li>
+                            <li><strong>Head Height:</strong> 25mm to 35mm</li>
+                            <li><strong>Background:</strong> Plain white background</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guide Section -->
+            <section class="w-full max-w-4xl px-8 py-16">
+                <h2 class="text-3xl font-bold text-center mb-12">How to Crop & Print Passport Photos at Home</h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-primary/10 text-primary font-bold rounded-full flex items-center justify-center text-lg">1</div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-2">Upload a Portrait</h3>
+                            <p class="text-on-surface-variant text-sm">Select a clear headshot photo taken against a plain light background. Ensure your shoulders are visible and you are looking straight at the camera.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-primary/10 text-primary font-bold rounded-full flex items-center justify-center text-lg">2</div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-2">Choose Template & Crop</h3>
+                            <p class="text-on-surface-variant text-sm">Select US Passport, Schengen Visa, or Indian Visa size. Zoom and position your photo so your face matches the aligned guide overlay perfectly.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-primary/10 text-primary font-bold rounded-full flex items-center justify-center text-lg">3</div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-2">Download & Print 4x6" Sheet</h3>
+                            <p class="text-on-surface-variant text-sm">Our smart layout automatically arranges the maximum amount of photos on a standard 6x4" print sheet. Download the JPEG and print it locally or at a nearby print shop.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO FAQ Section -->
+            <section class="w-full max-w-4xl px-8 py-16 border-t border-outline-variant">
+                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                <div class="space-y-6">
+                    <div class="bg-surface-container-low p-6 rounded-2xl">
+                        <h3 class="font-bold text-lg mb-2">Can I create my own passport photo online for free?</h3>
+                        <p class="text-sm text-on-surface-variant">Yes! Precision Print lets you crop and frame your photo to exact legal specifications and download a print-ready 4x6 sheet completely free, with no watermark or registration required.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-2xl">
+                        <h3 class="font-bold text-lg mb-2">What is the correct size for an Indian Visa photo?</h3>
+                        <p class="text-sm text-on-surface-variant">The official photo size requirement for an Indian Visa or OCI application is 2x2 inches (51x51 mm). The background must be pure white, and the head should occupy 70% to 80% of the photo.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-2xl">
+                        <h3 class="font-bold text-lg mb-2">What are the requirements for a Schengen Visa photo?</h3>
+                        <p class="text-sm text-on-surface-variant">A Schengen visa biometric photo must be 35mm in width and 45mm in height. The face should be centered, measuring between 32mm and 36mm from the chin to the top of the hair. The background must be light-colored or white.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-2xl">
+                        <h3 class="font-bold text-lg mb-2">How can I print passport size photos on a standard 6x4 paper?</h3>
+                        <p class="text-sm text-on-surface-variant">Our built-in auto-tiling algorithm arranges multiple copies of your cropped photo onto a standard 6x4 photo paper. Once generated, download the JPEG and print it on a 6x4 paper size at 100% scale without borders.</p>
+                    </div>
+                    <div class="bg-surface-container-low p-6 rounded-2xl">
+                        <h3 class="font-bold text-lg mb-2">What are US Visa photo requirements?</h3>
+                        <p class="text-sm text-on-surface-variant">US visa photos must be 2x2 inches (51x51 mm) on a white or off-white background, taken within the last 6 months. Glasses are not allowed, and the head must be centered and sized between 1" and 1.375".</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO Footer -->
+            <footer class="w-full max-w-6xl border-t border-outline-variant px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/70 bg-surface w-full mt-auto">
+                <div>
+                    &copy; 2026 Precision Print. All rights reserved. Created for online passport photo formatting, biometric visa layouts, and DIY printing.
+                </div>
+                <div class="flex gap-4">
+                    <span>Schengen Visa Size (35x45mm)</span>
+                    <span>US Visa Size (2x2")</span>
+                    <span>India OCI Visa Size (2x2")</span>
+                </div>
+            </footer>
         </div>
 
         <!-- Editor View -->
